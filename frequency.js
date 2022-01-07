@@ -1,7 +1,5 @@
 const fs = require("fs");
 
-// cd into src directory
-// $ node frequency.js
 const buffer = fs.readFileSync("./dictionaries/dictionary.json", "utf8");
 const dictionary = JSON.parse(buffer);
 

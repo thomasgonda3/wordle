@@ -4,8 +4,6 @@ const readline = require("readline").createInterface({
   output: process.stdout,
 });
 
-// cd into src directory
-// $ node wordle.js
 const length = 5;
 const buffer = fs.readFileSync(
   `./dictionaries/dictionary-${length}.json`,
@@ -17,9 +15,16 @@ const main = async () => {
   while (1) {
     console.log(`${dictionary.length} possible words left`);
     console.log(dictionary);
-    const currentGuess = dictionary[0];
-    const currentGuessArray = currentGuess.split("");
-    console.log(`Try ${currentGuess}`);
+    console.log(`You are advised to pick ${dictionary[0]}`);
+    let currentGuess = dictionary[0];
+    let currentGuessArray = [];
+    await new Promise((resolve) => {
+      readline.question("Input your guess below. \n", (result) => {
+        currentGuess = result;
+        currentGuessArray = currentGuess.split("");
+        resolve();
+      });
+    });
     await new Promise((resolve) => {
       readline.question(
         `Type in Results: 0 = miss, 1 = partial hit, 2 = hit in format 0 0 0 0 0 \n`,
