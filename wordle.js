@@ -5,7 +5,10 @@ const readline = require("readline").createInterface({
 });
 
 const length = 5;
-const buffer = fs.readFileSync(`./dictionaries/true-dictionary.json`, "utf8");
+const buffer = fs.readFileSync(
+  `./dictionaries/regular-dictionary.json`,
+  "utf8"
+);
 let dictionary = JSON.parse(buffer);
 
 const main = async () => {
